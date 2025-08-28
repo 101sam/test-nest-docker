@@ -1,0 +1,26 @@
+{
+  "name": "@test-docker/test-docker-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "implicitDependencies": [
+      "@test-docker/test-docker"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/jest:jest",
+        "outputs": [
+          "{projectRoot}/test-output/jest/coverage"
+        ],
+        "options": {
+          "jestConfig": "apps/test-docker-e2e/jest.config.ts",
+          "passWithNoTests": true
+        },
+        "dependsOn": [
+          "@test-docker/test-docker:build",
+          "@test-docker/test-docker:serve"
+        ]
+      }
+    }
+  }
+}
